@@ -8,13 +8,21 @@
 {{#each allDrones}}
 
 <h2>-{{this.name}}</h2>
-<p> Propellers: {{this.description}}</p>
+<p> Propellers: {{this.propellers}}</p>
 <p>Max Speed: {{this.maxSpeed}}</p>
 <br>
+<a href="/drones/{{this._id}}/edit"><button>Actualizar Drone</button></a>
+<br>
+<form action="/drones/{{this._id}}/delete" method="post">
+<button>Borrar Drone</button>
+</form>
 {{/each}}
 
+<br>
+<br>
 
 <a href="/drones/create"><button>Haz click aquí y crea tu dron</button></a>
+
 
 
 </div>
