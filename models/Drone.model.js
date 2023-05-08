@@ -1,8 +1,8 @@
 // Iteration #1
 const mongoose = require("mongoose")
 const droneSchema = new mongoose.Schema({
-    title: String,
-    description: Number,
+    name: String,
+    propellers: Number,
     maxSpeed: Number
 })
 

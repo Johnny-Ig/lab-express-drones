@@ -2,20 +2,51 @@ const express = require('express');
 const router = express.Router();
 
 // require the Drone model here
+const Drone = require("../models/Drone.model.js")
+
+//* GET "/drones" => LISTA DE TODOS LOS DRONES
 
 router.get('/drones', (req, res, next) => {
-  // Iteration #2: List the drones
-  // ... your code here
+  
+  Drone.find()
+  .then((allDrones) => {
+    console.log(allDrones)
+    res.render("drones/list.hbs", {
+      allDrones: allDrones
+    })
+  }).catch((err) => {
+    console.log(err)
+  });
+
+
 });
 
+//* GET ROUTE "/drones/create" => AÑADIR NUEVO DRON
 router.get('/drones/create', (req, res, next) => {
-  // Iteration #3: Add a new drone
-  // ... your code here
+  
+  res.render("drones/create-form.hbs")
+
+
 });
+
+
+//* POST => AñADIR NUEVO DRON
 
 router.post('/drones/create', (req, res, next) => {
-  // Iteration #3: Add a new drone
-  // ... your code here
+  Drone.create({
+    name: req.body.name,
+    propellers: req.body.propellers,
+    maxSpeed: req.body.maxSpeed
+  })
+  .then(()=>{
+  
+    console.log("Dron creado :)");
+
+    res.redirect("/drones")
+  })
+  .catch((error)=>{
+    console.log(error)
+  })
 });
 
 router.get('/drones/:id/edit', (req, res, next) => {

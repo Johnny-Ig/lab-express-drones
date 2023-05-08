@@ -1,1 +1,22 @@
-<h2>Available drones</h2>
+<div class="drone-container">
+
+
+<div class="drone-card">
+    <h2>Available drones</h2>
+
+
+{{#each allDrones}}
+
+<h2>-{{this.name}}</h2>
+<p> Propellers: {{this.description}}</p>
+<p>Max Speed: {{this.maxSpeed}}</p>
+<br>
+{{/each}}
+
+
+<a href="/drones/create"><button>Haz click aquí y crea tu dron</button></a>
+
+
+</div>
+
+</div>
